@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a problem with Auth Log Analyzer
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please fill in as much as you can;
+        the command and the output matter most.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The release tag or commit you used (or the output of `python3 auth_log_analyzer.py --version`).
+      placeholder: "1.0.0"
+    validations:
+      required: false
+  - type: input
+    id: python
+    attributes:
+      label: Python version and operating system
+      description: Output of `python3 --version`, plus your OS.
+      placeholder: "Python 3.12 on Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      description: The exact command, including any flags.
+      placeholder: |
+        python3 auth_log_analyzer.py examples/sample-auth.log --json
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What output, score, or exit code did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Paste the full output, including any error message.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Auth log lines involved (if any)
+      description: Paste the smallest redacted log sample that reproduces the problem. Never paste a real log with real usernames or IP addresses; redact them first.
+    validations:
+      required: false

@@ -1,0 +1,115 @@
+{
+  "source": "examples/sample-auth.log",
+  "counts": {
+    "total_lines": 67,
+    "parsed_lines": 65,
+    "malformed_lines": 2,
+    "failed_passwords": 15,
+    "failed_publickeys": 1,
+    "accepted_logins": 16,
+    "accepted_passwords": 1,
+    "accepted_publickeys": 15,
+    "invalid_user_attempts": 6,
+    "sudo_failures": 3,
+    "unique_ips": 7,
+    "brute_force_ips": [
+      "203.0.113.45"
+    ]
+  },
+  "top_ips": [
+    {
+      "ip": "203.0.113.45",
+      "failed": 12,
+      "accepted": 1,
+      "invalid_users": 4
+    },
+    {
+      "ip": "198.51.100.77",
+      "failed": 2,
+      "accepted": 0,
+      "invalid_users": 0
+    },
+    {
+      "ip": "192.0.2.50",
+      "failed": 1,
+      "accepted": 0,
+      "invalid_users": 0
+    },
+    {
+      "ip": "198.51.100.23",
+      "failed": 0,
+      "accepted": 7,
+      "invalid_users": 0
+    },
+    {
+      "ip": "192.168.1.10",
+      "failed": 0,
+      "accepted": 5,
+      "invalid_users": 0
+    },
+    {
+      "ip": "192.168.1.20",
+      "failed": 0,
+      "accepted": 3,
+      "invalid_users": 0
+    },
+    {
+      "ip": "198.51.100.99",
+      "failed": 0,
+      "accepted": 0,
+      "invalid_users": 2
+    }
+  ],
+  "score": 0,
+  "grade": "F",
+  "findings": [
+    {
+      "severity": "high",
+      "source": "203.0.113.45",
+      "message": "Brute-force attack from 203.0.113.45: 12 failed passwords between 02:10 and 02:33 (60 minute window).",
+      "fix": "Block 203.0.113.45 at the firewall (fail2ban or an iptables rule), check whether any account it tried was compromised, and move SSH to key-only authentication."
+    },
+    {
+      "severity": "high",
+      "source": "203.0.113.45",
+      "message": "Successful password login for admin from 203.0.113.45 at 02:51 came after 12 failed password attempt(s) from the same IP in the previous 60 minutes. This may be a compromised account.",
+      "fix": "Treat admin's account as possibly compromised: force a password reset, review what that session did, and revoke any keys or sessions created by it."
+    },
+    {
+      "severity": "high",
+      "source": "admin",
+      "message": "Password spraying against admin: 8 failed passwords from 3 different IPs (192.0.2.50, 198.51.100.77, 203.0.113.45). One password is being tried against one account from many addresses.",
+      "fix": "Lock or rotate the admin account, check it for unauthorised changes, and rate-limit logins per account as well as per IP."
+    },
+    {
+      "severity": "medium",
+      "source": "sshd",
+      "message": "User enumeration: 6 attempts probed 6 usernames that do not exist (backup, guest, operator, oracle, testuser, webadmin). An attacker is mapping which accounts exist on this host.",
+      "fix": "Do not reveal whether a username exists: keep sshd's default behaviour, disable password authentication, and block the probing IPs."
+    },
+    {
+      "severity": "medium",
+      "source": "root",
+      "message": "Root login attempts: 2 failed and 0 accepted. Direct root login is the first thing an attacker tries.",
+      "fix": "Set PermitRootLogin no in sshd_config and log in as a normal user, then use sudo. Rotate the root password if any root login succeeded."
+    },
+    {
+      "severity": "medium",
+      "source": "sshd",
+      "message": "Password authentication accepted 1 time(s) (admin). Passwords can be guessed; SSH keys cannot.",
+      "fix": "Move to key-only authentication: set PasswordAuthentication no in sshd_config and give every user an SSH key."
+    },
+    {
+      "severity": "medium",
+      "source": "sudo",
+      "message": "Sudo authentication failures: 3 failed attempt(s) for alice, bob. Somebody is trying to escalate to root.",
+      "fix": "Check who was at the keyboard for each failure, review sudoers for accounts that should not have sudo, and alert on repeated sudo failures."
+    },
+    {
+      "severity": "low",
+      "source": "sshd",
+      "message": "Off-hours logins: 2 accepted login(s) between 00:00 and 06:00 (admin from 203.0.113.45 at 02:51, deploy from 198.51.100.23 at 03:12). Logins at this hour deserve a second look.",
+      "fix": "Confirm each off-hours login was expected (on-call work, a scheduled job, a different timezone). If not, treat the account as possibly compromised."
+    }
+  ]
+}

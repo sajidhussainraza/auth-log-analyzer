@@ -1,0 +1,67 @@
+Nov 23 02:10:03 webserver sshd[1042]: Failed password for root from 203.0.113.45 port 52310 ssh2
+Nov 23 02:11:27 webserver sshd[1042]: Failed password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:12:15 webserver sshd[1042]: Invalid user testuser from 203.0.113.45 port 52310
+Nov 23 02:12:41 webserver sshd[1042]: Failed password for invalid user testuser from 203.0.113.45 port 52310 ssh2
+Nov 23 02:14:09 webserver sshd[1042]: Failed password for ubuntu from 203.0.113.45 port 52310 ssh2
+Nov 23 02:15:04 webserver sshd[1042]: Invalid user guest from 203.0.113.45 port 52310
+Nov 23 02:15:52 webserver sshd[1042]: Failed password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:17:36 webserver sshd[1042]: Failed password for root from 203.0.113.45 port 52310 ssh2
+Nov 23 02:19:22 webserver sshd[1042]: Invalid user oracle from 203.0.113.45 port 52310
+Nov 23 02:19:58 webserver sshd[1042]: Failed password for deploy from 203.0.113.45 port 52310 ssh2
+Nov 23 02:20:41 webserver sshd[1187]: Failed password for admin from 198.51.100.77 port 41120 ssh2
+Nov 23 02:22:14 webserver sshd[1042]: Failed password for postgres from 203.0.113.45 port 52310 ssh2
+Nov 23 02:23:09 webserver sshd[1193]: Invalid user webadmin from 198.51.100.99 port 39200
+Nov 23 02:24:47 webserver sshd[1042]: Failed password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:26:18 webserver sshd[1193]: Invalid user backup from 203.0.113.45 port 52310
+Nov 23 02:27:31 webserver sshd[1042]: Failed password for test from 203.0.113.45 port 52310 ssh2
+Nov 23 02:30:05 webserver sshd[1042]: Failed password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:31:44 webserver sshd[1193]: Invalid user operator from 198.51.100.99 port 39200
+Nov 23 02:33:49 webserver sshd[1042]: Failed password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:35:12 webserver sshd[1201]: Failed password for admin from 198.51.100.77 port 41120 ssh2
+Nov 23 02:36:27 webserver sshd[1042]: Failed publickey for alice from 203.0.113.45 port 52310 ssh2
+Nov 23 02:40:55 webserver sshd[1210]: Failed password for admin from 192.0.2.50 port 33500 ssh2
+Nov 23 02:44:19 webserver sshd[1042]: Connection closed by 203.0.113.45 port 52310 [preauth]
+Nov 23 02:51:02 webserver sshd[1230]: Accepted password for admin from 203.0.113.45 port 52310 ssh2
+Nov 23 02:51:02 webserver sshd[1230]: pam_unix(sshd:session): session opened for user admin by (uid=0)
+Nov 23 03:02:18 webserver sshd[1230]: pam_unix(sshd:session): session closed for user admin
+Nov 23 03:12:40 webserver sshd[1310]: Accepted publickey for deploy from 198.51.100.23 port 44120 ssh2
+Nov 23 03:12:40 webserver sshd[1310]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Nov 23 03:40:05 webserver sshd[1310]: pam_unix(sshd:session): session closed for user deploy
+Nov 23 08:02:11 webserver sshd[2041]: Accepted publickey for alice from 192.168.1.10 port 51234 ssh2
+Nov 23 08:02:11 webserver sshd[2041]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Nov 23 08:05:44 webserver sshd[2055]: Accepted publickey for bob from 198.51.100.23 port 44120 ssh2
+Nov 23 08:05:44 webserver sshd[2055]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Nov 23 08:31:02 webserver sshd[2102]: Accepted publickey for alice from 192.168.1.10 port 51236 ssh2
+Nov 23 08:45:19 webserver sshd[2041]: Disconnected from user alice 192.168.1.10 port 51234
+Nov 23 09:15:22 webserver sudo: pam_unix(sudo:auth): authentication failure; logname=alice uid=1000 euid=0 tty=/dev/pts/0 ruser=alice rhost= user=alice
+Nov 23 09:16:04 webserver sudo: pam_unix(sudo:auth): authentication failure; logname=alice uid=1000 euid=0 tty=/dev/pts/0 ruser=alice rhost= user=alice
+Nov 23 09:20:11 webserver sudo: bob : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/bob ; USER=root ; COMMAND=/bin/cat /etc/shadow
+Nov 23 09:40:19 webserver sshd[2210]: Accepted publickey for bob from 198.51.100.23 port 44122 ssh2
+Nov 23 10:00:00 webserver sshd[2300]: Server listening on 0.0.0.0 port 22.
+Nov 23 10:14:37 webserver sshd[2311]: Accepted publickey for carol from 192.168.1.20 port 60110 ssh2
+Nov 23 10:14:37 webserver sshd[2311]: pam_unix(sshd:session): session opened for user carol by (uid=0)
+Nov 23 10:48:52 webserver sshd[2055]: Disconnected from user bob 198.51.100.23 port 44120
+Nov 23 11:22:47 webserver sshd[2405]: Accepted publickey for alice from 192.168.1.10 port 51240 ssh2
+Nov 23 11:30:02 webserver sshd[2405]: Received disconnect from 192.168.1.10 port 51240:11: disconnected by user
+Nov 23 12:05:33 webserver sshd[2510]: Accepted publickey for dave from 198.51.100.23 port 44130 ssh2
+Nov 23 12:05:33 webserver sshd[2510]: pam_unix(sshd:session): session opened for user dave by (uid=0)
+Nov 23 13:41:26 webserver sshd[2311]: Disconnected from user carol 192.168.1.20 port 60110
+Nov 23 14:05:33 webserver sshd[2601]: Accepted publickey for deploy from 198.51.100.23 port 44140 ssh2
+Nov 23 14:05:33 webserver sshd[2601]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Nov 23 15:12:09 webserver sshd[2510]: Disconnected from user dave 198.51.100.23 port 44130
+Nov 23 15:44:51 webserver sshd[2702]: Accepted publickey for carol from 192.168.1.20 port 60112 ssh2
+Nov 23 16:20:14 webserver sshd[2601]: Disconnected from user deploy 198.51.100.23 port 44140
+Nov 23 16:48:20 webserver sshd[2803]: Accepted publickey for alice from 192.168.1.10 port 51244 ssh2
+Nov 23 17:05:47 webserver sshd[2803]: Disconnected from user alice 192.168.1.10 port 51244
+Nov 23 18:12:05 webserver sshd[2901]: Accepted publickey for bob from 198.51.100.23 port 44150 ssh2
+Nov 23 18:12:05 webserver sshd[2901]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Nov 23 18:55:30 webserver sshd[2901]: Disconnected from user bob 198.51.100.23 port 44150
+Nov 23 19:22:10 webserver sshd[3010]: Accepted publickey for alice from 192.168.1.10 port 51248 ssh2
+Nov 23 19:22:10 webserver sshd[3010]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Nov 23 20:01:44 webserver sshd[3010]: Disconnected from user alice 192.168.1.10 port 51248
+Nov 23 20:30:26 webserver sshd[3105]: Accepted publickey for carol from 192.168.1.20 port 60120 ssh2
+Nov 23 21:14:08 webserver sshd[3105]: Disconnected from user carol 192.168.1.20 port 60120
+this is not a log line at all
+Nov 23 10:00:00 webserver
+Nov 23 21:40:15 webserver sshd[3201]: Accepted publickey for dave from 198.51.100.23 port 44160 ssh2
+Nov 23 22:05:37 webserver sshd[3201]: Disconnected from user dave 198.51.100.23 port 44160

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security issue
+    url: https://github.com/sajidhussainraza/auth-log-analyzer/blob/main/SECURITY.md
+    about: Do not open a public issue for a security problem; report it privately by email instead.
+  - name: Question about auth logs
+    url: https://www.ssh.com/academy/ssh/log
+    about: A short guide to reading sshd auth log lines.

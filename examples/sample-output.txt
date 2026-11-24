@@ -1,0 +1,40 @@
+Auth log report: examples/sample-auth.log
+Score: 0/100  Grade: F
+
+Summary:
+  Lines parsed: 67
+  Malformed lines skipped: 2
+  Failed passwords: 15
+  Failed public keys: 1
+  Accepted logins: 16 (password: 1, publickey: 15)
+  Invalid user attempts: 6
+  Sudo authentication failures: 3
+  Unique source IPs: 7
+  Brute-force IPs: 1
+
+Top source IPs by failed passwords:
+  203.0.113.45     failed: 12  accepted: 1   invalid users: 4
+  198.51.100.77    failed: 2   accepted: 0   invalid users: 0
+  192.0.2.50       failed: 1   accepted: 0   invalid users: 0
+  198.51.100.23    failed: 0   accepted: 7   invalid users: 0
+  192.168.1.10     failed: 0   accepted: 5   invalid users: 0
+  192.168.1.20     failed: 0   accepted: 3   invalid users: 0
+  198.51.100.99    failed: 0   accepted: 0   invalid users: 2
+
+Findings (8):
+  [HIGH] 203.0.113.45: Brute-force attack from 203.0.113.45: 12 failed passwords between 02:10 and 02:33 (60 minute window).
+        Fix: Block 203.0.113.45 at the firewall (fail2ban or an iptables rule), check whether any account it tried was compromised, and move SSH to key-only authentication.
+  [HIGH] 203.0.113.45: Successful password login for admin from 203.0.113.45 at 02:51 came after 12 failed password attempt(s) from the same IP in the previous 60 minutes. This may be a compromised account.
+        Fix: Treat admin's account as possibly compromised: force a password reset, review what that session did, and revoke any keys or sessions created by it.
+  [HIGH] admin: Password spraying against admin: 8 failed passwords from 3 different IPs (192.0.2.50, 198.51.100.77, 203.0.113.45). One password is being tried against one account from many addresses.
+        Fix: Lock or rotate the admin account, check it for unauthorised changes, and rate-limit logins per account as well as per IP.
+  [MEDIUM] sshd: User enumeration: 6 attempts probed 6 usernames that do not exist (backup, guest, operator, oracle, testuser, webadmin). An attacker is mapping which accounts exist on this host.
+        Fix: Do not reveal whether a username exists: keep sshd's default behaviour, disable password authentication, and block the probing IPs.
+  [MEDIUM] root: Root login attempts: 2 failed and 0 accepted. Direct root login is the first thing an attacker tries.
+        Fix: Set PermitRootLogin no in sshd_config and log in as a normal user, then use sudo. Rotate the root password if any root login succeeded.
+  [MEDIUM] sshd: Password authentication accepted 1 time(s) (admin). Passwords can be guessed; SSH keys cannot.
+        Fix: Move to key-only authentication: set PasswordAuthentication no in sshd_config and give every user an SSH key.
+  [MEDIUM] sudo: Sudo authentication failures: 3 failed attempt(s) for alice, bob. Somebody is trying to escalate to root.
+        Fix: Check who was at the keyboard for each failure, review sudoers for accounts that should not have sudo, and alert on repeated sudo failures.
+  [LOW] sshd: Off-hours logins: 2 accepted login(s) between 00:00 and 06:00 (admin from 203.0.113.45 at 02:51, deploy from 198.51.100.23 at 03:12). Logins at this hour deserve a second look.
+        Fix: Confirm each off-hours login was expected (on-call work, a scheduled job, a different timezone). If not, treat the account as possibly compromised.
